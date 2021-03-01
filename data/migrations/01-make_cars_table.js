@@ -9,3 +9,7 @@ exports.up = function (knex) {
     tbl.string("transmission");
   });
 };
+
+exports.down = function (knex) {
+  return knex.schema.dropTableIfExists("cars");
+};
