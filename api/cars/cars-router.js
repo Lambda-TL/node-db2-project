@@ -37,7 +37,7 @@ router.post(
         carsModel
           .getById(carId)
           .then((car) => {
-            res.status(200).json({ car });
+            res.status(200).json(car);
           })
           .catch((err) => {
             res.status(500).json({

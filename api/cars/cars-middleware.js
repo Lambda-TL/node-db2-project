@@ -2,14 +2,18 @@ const carsModel = require("./cars-model");
 const vinValidator = require("vin-validator");
 
 const checkCarId = (req, res, next) => {
-  const checkCar = carsModel.getById(req.params.id);
-  if (checkCar.length > 0) {
-    next();
-  } else {
-    res
-      .status(404)
-      .json({ message: `car with id ${req.params.id} is not found` });
-  }
+  carsModel
+    .getById(req.params.id)
+    .then((car) => {
+      if (car) {
+        next();
+      } else {
+        res
+          .status(404)
+          .json({ message: `car with id ${req.params.id} is not found` });
+      }
+    })
+    .catch(() => {});
 };
 
 const checkCarPayload = (req, res, next) => {
