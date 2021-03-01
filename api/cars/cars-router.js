@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const carsModel = require("./cars-model");
 const middleware = require("./cars-middleware");
-const dbConfig = require("../../data/db-config");
 
 router.get("/", (req, res) => {
   carsModel
